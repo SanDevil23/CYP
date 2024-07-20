@@ -1,0 +1,21 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> indexMap = new HashMap<Integer, Integer>();
+        int n = nums.length;
+        int[] res = new int[]{};
+
+        // storing hash values into the map
+        for (int i = 0; i<n; i++){              // O(n)
+            indexMap.put(nums[i], i);
+        }
+
+         for (int i = 0; i < n; i++) {
+            int complement = target - nums[i];
+            if (indexMap.containsKey(complement) && indexMap.get(complement) != i) {
+                return new int[]{i, indexMap.get(complement)};
+            }
+        }
+
+        return res;
+    }
+}
